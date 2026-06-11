@@ -7,10 +7,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def setup_api_key():
-    """Load Google API key from environment or prompt."""
-    if "GOOGLE_API_KEY" not in os.environ:
-        os.environ["GOOGLE_API_KEY"] = input("Enter Google API Key: ")
-    os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "0"
+    # """Load Google API key from environment or prompt."""
+    # if "GOOGLE_API_KEY" not in os.environ:
+    #     os.environ["GOOGLE_API_KEY"] = input("Enter Google API Key: ")
+    # os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "0"
+    os.environ["DASHSCOPE_API_KEY"] = os.getenv("DASHSCOPE_API_KEY")
+    # Ánh xạ DASHSCOPE_URL sang DASHSCOPE_API_BASE cho LiteLLM nhận diện
+    os.environ["DASHSCOPE_API_BASE"] = os.getenv("DASHSCOPE_URL")
+    print("API key loaded.")
     print("API key loaded.")
 
 

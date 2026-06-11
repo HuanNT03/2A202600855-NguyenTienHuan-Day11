@@ -3,6 +3,7 @@ Lab 11 — Agent Creation (Unsafe & Protected)
 """
 from google.adk.agents import llm_agent
 from google.adk import runners
+from google.adk.models.lite_llm import LiteLlm
 
 from core.utils import chat_with_agent
 
@@ -15,7 +16,7 @@ def create_unsafe_agent():
     """
     agent = llm_agent.LlmAgent(
         # model="gemini-2.5-flash-lite",
-        model="litellm:dashscope/qwen-turbo",
+        model=LiteLlm(model="dashscope/qwen-turbo"),
         name="unsafe_assistant",
         instruction="""You are a helpful customer service assistant for VinBank.
     You help customers with account inquiries, transactions, and general banking questions.
@@ -36,7 +37,7 @@ def create_protected_agent(plugins: list):
     """
     agent = llm_agent.LlmAgent(
         # model="gemini-2.5-flash-lite",
-        model="litellm:dashscope/qwen-turbo",
+        model=LiteLlm(model="dashscope/qwen-turbo"),
         name="protected_assistant",
         instruction="""You are a helpful customer service assistant for VinBank.
     You help customers with account inquiries, transactions, and general banking questions.
